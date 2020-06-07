@@ -1,0 +1,911 @@
+body {
+    background-color: #ebf5fc;
+}
+
+/* ↓凹ませる処理 */
+
+/* box-shadow: inset 2px 2px 5px #BABECC, inset -5px -5px 10px #FFF; */
+
+/* ↓浮き上がらせる処理 */
+
+/* box-shadow: -2px -2px 5px white, 3px 3px 5px rgba(0, 0, 0, 0.1); */
+
+
+
+
+
+/* -------------------------
+        ヘッダー 
+ ------------------------- */
+
+header{
+    /* background-color: #ebf5fc; */
+    /* background-color: aqua; */
+    width: 100%;
+    height: 70px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    box-shadow: -2px -2px 5px white, 3px 3px 5px rgba(0, 0, 0, 0.1);
+}
+
+.header_inputBox{
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    box-shadow: inset 2px 2px 5px #BABECC, inset -5px -5px 10px #FFF;
+    border-radius: 320px;
+    
+}
+
+.fa-search{
+    margin: 10px;
+    color: #757575;
+}
+
+:focus{    
+    outline: none;
+}
+
+
+/*  半角開けることで、子要素の中にある同一のセレクタに適用 */
+
+header input[type="text"] {
+    width: 400px;
+    height: 30px;
+    background-color: transparent;
+}
+
+
+/* -------------------------
+        メイン部分 
+ ------------------------- */
+
+main{
+    display: flex;
+    justify-content: flex-end;
+}
+
+/* -------------------------
+        チャットリスト 
+ ------------------------- */
+
+.chatlist {
+    width: 25%;
+    /* position: absolute; */
+}
+
+.title_box{
+    margin: 10px;
+}
+
+h1{
+    color: #6a9bd8;
+    text-align: center;
+    font-size: 20px;
+}
+
+
+.chatlistBox_group {
+    box-shadow: -2px -2px 5px white, 3px 3px 5px rgba(0, 0, 0, 0.1);
+    height: 100vh;
+    color: #545454;
+    /* z-index: 1; */
+}
+
+/* -------------------------
+        病院名 
+ ------------------------- */
+
+
+.li {
+    margin: 0px;
+    width: 100%; 
+}
+
+.hospital_name{
+    padding-left: 30px;
+    font-size: 20px;
+    height: 60px;  
+    line-height: 60px;
+} 
+
+.chatlistBox:hover{
+    box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.1), 3px 3px 5px rgba(0, 0, 0, 0.1);
+}
+
+.hospital_name:active {
+    box-shadow: inset -2px -2px 5px white, inset 3px 3px 5px rgba(0, 0, 0, 0.1);
+}
+
+/* -------------------------
+        診療科目
+ ------------------------- */
+
+
+.field { 
+    padding-left: 50px;
+    font-size: 20px;
+    line-height: 60px;
+    list-style:none;
+} 
+
+.field:hover{
+    box-shadow: -2px -2px 5px rgba(0, 0, 0, 0.1), 3px 3px 5px rgba(0, 0, 0, 0.1);
+}
+
+.field:active {
+    box-shadow: inset -2px -2px 5px white, inset 3px 3px 5px rgba(0, 0, 0, 0.1);
+}
+
+
+
+
+/* -------------------------
+        先生
+ ------------------------- */
+
+.doctors{
+    padding-left: 50px;
+    font-size: 20px;
+    line-height: 60px;
+    list-style:none;
+    /* z-index: 2; */
+}
+
+.adoctor {
+    padding-left: 50px;
+    font-size: 20px;
+    height: 60px;  
+    line-height: 60px;
+    list-style:none;
+    /* z-index: 2; */
+    
+} 
+
+.adoctor:hover{
+    box-shadow: -2px -2px 5px rgba(0, 0, 0, 0.1), 3px 3px 5px rgba(0, 0, 0, 0.1);
+}
+
+.adoctor:active {
+    box-shadow: inset -2px -2px 5px white, inset 3px 3px 5px rgba(0, 0, 0, 0.1);
+}
+
+
+
+#fieldBox ,#doctors{
+    display: none;
+} 
+
+
+
+
+/* -------------------------
+        チャットメイン部分 
+ ------------------------- */
+
+.main_chat{
+    width: 50%;
+    box-shadow: inset 2px 2px 5px #BABECC, inset -2px -2px 5px #BABECC;
+    /* position: fixed; */
+}
+
+.main_message{
+    display: flex;
+    justify-content: center;
+    align-items: flex-end;
+    flex-direction: column;
+}
+
+.add_message{
+    height: 500px;
+    width: 100%;
+    display: flex;
+    overflow: auto;
+}
+
+.add_message_02{
+    display: none;
+}
+
+
+.theother_message{
+    width: 100%;
+    
+
+}
+
+.my_message{
+    width: 100%;
+}
+
+#output li {
+    margin: 20px;
+    padding: 10px;
+    border-radius: 20px;
+    box-shadow: -2px -2px 5px white, 8px 8px 5px rgba(0, 0, 0, 0.1); 
+    list-style: none;
+}
+
+
+/* -------------------------
+        チャットボタン 
+ ------------------------- */
+
+.chatButton {
+    display: flex;
+    justify-content: flex-end;
+}
+
+input[type="file"]{
+    margin: 10px;
+    display: none;
+}
+
+
+
+.file{
+    width: 80px;
+    text-align: center;
+    box-shadow: -2px -2px 5px white, 3px 3px 5px rgba(0, 0, 0, 0.1);
+    margin: 10px;
+    border-radius: 20px;
+    color: #007bff;
+    padding: 4px;
+}
+
+.sendButton {
+    width: 50px;
+    text-align: center;
+    box-shadow: -2px -2px 5px white, 3px 3px 5px rgba(0, 0, 0, 0.1);
+    margin: 10px 35px 10px 10px;
+    border-radius: 20px;
+}
+
+#send{
+    color: #007bff;
+    padding: 4px;
+}
+
+
+.sendButton:hover{
+    box-shadow: -2px -2px 5px rgba(0, 0, 0, 0.1), 3px 3px 5px rgba(0, 0, 0, 0.1);
+}
+
+
+.sendButton:active {
+    box-shadow: inset -2px -2px 5px white, inset 3px 3px 5px rgba(0, 0, 0, 0.1);
+}
+
+
+.file:hover{
+    box-shadow: -2px -2px 5px rgba(0, 0, 0, 0.1), 3px 3px 5px rgba(0, 0, 0, 0.1);
+}
+
+.file:active{
+    box-shadow: inset -2px -2px 5px white, inset 3px 3px 5px rgba(0, 0, 0, 0.1);
+}
+
+
+
+.input_message {
+    box-shadow: inset 2px 2px 5px #BABECC, inset -5px -5px 10px #FFF;
+    border-radius: 30px;
+    width: 95%;
+    margin: auto;
+}
+
+input[type=file] {
+    font-family: FontAwesome;
+}
+
+textarea {
+    width: 100%;
+    padding: 10px;
+}
+
+/* -------------------------
+    右のインフォメーション
+ ------------------------- */
+
+.information {
+    width: 25%;
+    /* z-index: 100; */
+    /* position: fixed; */
+    /* margin-right:0; */
+    /* padding-left: 0; */
+}
+
+.informationBox_main {
+
+    /* box-shadow: 2px -2px 5px white, 3px 3px 5px rgba(0, 0, 0, 0.1); */
+    height: 100vh;
+    box-shadow: 0px -2px 5px white, -3px 3px 5px rgba(0, 0, 0, 0.1);
+    padding-top: 10px;
+    /* box-shadow: 0px -2px 5px white, 3px 3px 5px rgba(0, 0, 0, 0.1); */
+    /* box-shadow: -2px 0px  rgba(0, 0, 0, 0.1); */
+}
+
+.research_outcomeBox{
+    padding: 10px 10px 10px 20px;
+    color: #545454;
+}
+
+.information_inputBox{
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    box-shadow: inset 2px 2px 5px #BABECC, inset -5px -5px 10px #FFF;
+    border-radius: 320px;
+    width: 90%;
+    margin: auto;
+}
+
+.show_information{
+    height: 35px;
+    width: 130px;
+    line-height: 35px;
+    text-align: center;
+    box-shadow: -2px -2px 5px white, 3px 3px 5px rgba(0, 0, 0, 0.1);
+    margin: 10px 35px 10px 10px;
+    border-radius: 20px;
+    margin-left: 40px;
+    color:#57c9d5;
+}
+
+.show_information:hover{
+    box-shadow: -2px -2px 5px rgba(0, 0, 0, 0.1), 3px 3px 5px rgba(0, 0, 0, 0.1);
+}
+
+.show_information:active{
+    box-shadow: inset -2px -2px 5px white, inset 3px 3px 5px rgba(0, 0, 0, 0.1);
+}
+
+
+
+.information_searchBox{
+    display: flex;
+}
+
+/* -------------------------------- */
+            モーダルinfo
+/* --------------------------------- */
+
+.information_modalBox{
+    width: 100%;
+    height:  100vh;
+}
+
+
+
+.sex{
+    display: flex;
+    justify-content: space-evenly;
+    list-style: none;
+    margin: 20px 30px 20px;
+}
+
+.sex  li {
+    height: 35px;
+    line-height: 35px;
+    text-align: center;
+    /* box-shadow: -2px -2px 5px white, 3px 3px 5px rgba(0, 0, 0, 0.1); */
+    margin: 10px 35px 10px 10px;
+    border-radius: 20px;
+}
+
+.sexHuman{
+    box-shadow: -2px -2px 5px white, 3px 3px 5px rgba(0, 0, 0, 0.1);
+}
+
+.sex_push_button {
+    /* 凹ませる処理 */
+    box-shadow: inset 2px 2px 5px #BABECC, inset -5px -5px 10px #FFF;
+/* 
+    box-shadow: inset -2px -2px 5px white, inset 3px 3px 5px rgba(0, 0, 0, 0.1); */
+}
+
+.sex > li:nth-child(1) {
+    color:#007bff;
+    width: 70px;
+}
+
+/* .sex > li:nth-child(1):hover{
+    box-shadow: -2px -2px 5px rgba(0, 0, 0, 0.1), 3px 3px 5px rgba(0, 0, 0, 0.1);
+} */
+
+.sex > li:nth-child(1):active{
+    box-shadow: inset -2px -2px 5px white, inset 3px 3px 5px rgba(0, 0, 0, 0.1);
+}
+
+/* .sex > li:nth-child(1) :focus{
+    box-shadow: inset -2px -2px 5px white, inset 3px 3px 5px rgba(0, 0, 0, 0.1);
+} */
+
+.sex > li:nth-child(2) {
+    color: rgb(213, 63, 140);
+    width: 70px;
+}
+
+/* .sex > li:nth-child(2):hover{
+    box-shadow: -2px -2px 5px rgba(0, 0, 0, 0.1), 3px 3px 5px rgba(0, 0, 0, 0.1);
+} */
+
+.sex > li:nth-child(2):active{
+    box-shadow: inset -2px -2px 5px white, inset 3px 3px 5px rgba(0, 0, 0, 0.1);
+}
+
+.sex > li:nth-child(3) {
+    width: 70px;
+    background: -webkit-linear-gradient(0deg, #16bffd
+, #ef629f);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+
+/* .sex > li:nth-child(3):hover{
+    box-shadow: -2px -2px 5px rgba(0, 0, 0, 0.1), 3px 3px 5px rgba(0, 0, 0, 0.1);
+} */
+
+.sex > li:nth-child(3):active{
+    box-shadow: inset -2px -2px 5px white, inset 3px 3px 5px rgba(0, 0, 0, 0.1);
+}
+
+
+.address{
+    width: 70px;
+    height: 35px;
+    line-height: 35px;
+    text-align: center;
+    box-shadow: -2px -2px 5px white, 3px 3px 5px rgba(0, 0, 0, 0.1);
+    /* margin: 10px 35px 10px 10px; */
+    border-radius: 20px;
+    list-style: none;
+    margin: auto;
+    color: #545454;
+    text-decoration: none;
+    margin: 5px 40px;
+}
+
+a{
+    color: #545454;
+}
+
+#add_prefecture{
+    
+    line-height: 45px;
+    color: #545454;
+}
+
+
+
+.address:hover {
+    box-shadow: -2px -2px 5px rgba(0, 0, 0, 0.1), 3px 3px 5px rgba(0, 0, 0, 0.1);
+}
+
+.address:active {
+    box-shadow: inset -2px -2px 5px white, inset 3px 3px 5px rgba(0, 0, 0, 0.1);
+}
+
+
+
+/* ---------------------------- */
+              /* 人体 */
+/* -----------------------------> */
+
+.body-color-click{ 
+    color: #ff7d16; 
+    background-color: #ff7d16;
+    fill:#ff7d16;
+ } 
+
+
+.head{
+    fill: #57c9d5;
+}
+
+
+
+
+.human-body {
+    width: 207px;
+    position: relative;
+    padding-top: 240px;
+    height: 260px;
+    display: block;
+    margin: 20px auto;
+}
+.human-body svg:hover {
+    cursor: pointer;
+}
+
+.human-body svg:hover path {
+    fill: #ff7d16;
+        /* text-shadow: -2px -2px 5px rgba(0, 0, 0, 0.1), 3px 3px 5px rgba(0, 0, 0, 0.1); */
+        /* transform: scale(0.5,0.5); */
+      
+       
+}
+
+
+/* path:hover{
+     box-shadow: -2px -2px 5px rgba(0, 0, 0, 0.1), 3px 3px 5px rgba(0, 0, 0, 0.1);
+} */
+
+
+
+.human-body svg {
+    position: absolute;
+    left: 50%;
+    fill: #57c9d5;
+}
+
+.human-body svg.head {
+    margin-left: -28.5px;
+    top: -6px;
+}
+.human-body svg.shoulder {
+    margin-left: -53.5px;
+    top: 69px;
+}
+.human-body svg.arm {
+    margin-left: -78px;
+    top: 112px;
+}
+.human-body svg.cheast {
+    margin-left: -43.5px;
+    top: 88px;
+}
+.human-body svg.stomach {
+    margin-left: -37.5px;
+    top: 130px;
+}
+.human-body svg.legs {
+    margin-left: -46.5px;
+    top: 205px;
+    z-index: 9999;
+}
+.human-body svg.hands {
+    margin-left: -102.5px;
+    top: 224px;
+}
+#area {
+    display: block;
+    width: 100%;
+    clear: both;
+    padding: 10px;
+    text-align: center;
+    font-size: 25px;
+    font-family: Courier New;
+    color: #a5a5a5;
+}
+
+
+#area #data {
+    color: black;
+}
+
+#research_outcome{
+    width: 160px;
+}
+
+.show_information{
+    display: none;
+}
+
+
+
+/* ---------------------------- */
+         /* モーダル */
+/* -----------------------------> */
+.modal{
+    text-decoration: none;
+    
+}
+
+.addressBox {
+    display: flex;
+}
+
+a{
+    text-decoration: none;
+
+}
+
+.modaal-container{
+    height: 850px;
+    background-color: #ebf5fc ;
+    max-width: 1300px;
+    
+}
+
+.infoBox {
+    height: 35px;
+    line-height: 35px;
+    text-align: center;
+    box-shadow: -2px -2px 5px white, 3px 3px 5px rgba(0, 0, 0, 0.1);
+    margin: 10px 35px 20px 10px;
+    border-radius: 20px;
+    list-style: none;
+    width: 320px;
+}
+
+.info_list{
+    display: inline-block;
+}
+.infoBox > li{
+    text-align: left;
+    margin-left: 10px;
+    margin-bottom: 20px;
+}
+
+.info_labe{
+    margin-right: 15px;
+    text-align: left;
+}
+
+
+/* .info_blue{
+    margin-top: 100px;
+    
+    width: 380px;
+    height: 380px;
+    box-shadow: -2px -2px 5px white, 3px 3px 5px rgba(0, 0, 0, 0.1);
+    border-radius: 50%;
+    position: relative;
+}
+
+.info_blue2{
+    width: 300px;
+    height: 300px;
+    box-shadow: -2px -2px 5px white, 3px 3px 5px rgba(0, 0, 0, 0.1);
+    border-radius: 50%;
+    position: absolute;
+    left:40px;
+    top: 40px;
+    background-color: #007bff;
+}
+
+.info_blue3{
+    width: 260px;
+    height: 260px;
+
+    border-radius: 50%;
+    position: absolute;
+    left:20px;
+    top: 20px;
+    background-color: #ebf5fc;
+    box-shadow: 2px 2px 2px 0px #DFE4EA inset, -2px -2px 2px 0px #ffffff inset;
+}
+
+.info_blue4{
+    width: 220px;
+    height: 220px;
+
+    border-radius: 50%;
+    position: absolute;
+    left:20px;
+    top: 20px;
+    background-color: #ebf5fc;
+    box-shadow: 2px 2px 2px 0px #DFE4EA inset, -2px -2px 2px 0px #ffffff inset;
+
+}
+
+.persent{
+    z-index: 100;
+    position: absolute;
+    top:70px;
+    left: 50px;
+    font-size: 50px;
+} */
+
+/*病歴 */
+.medicalHistoryBox{
+    width: 320px;
+    height: 560px;
+
+
+
+    line-height: 35px;
+    text-align: center;
+    box-shadow: -2px -2px 5px white, 3px 3px 5px rgba(0, 0, 0, 0.1);
+    margin: 10px 35px 20px 10px;
+    border-radius: 20px;
+    list-style: none;
+    overflow: scroll;
+}
+
+.disease_name{
+    position: sticky;
+    box-shadow: initial;
+}
+
+
+.medicalHistory_list > li{
+    padding-bottom: 10px;
+    text-align: left;
+    box-shadow: initial;
+    padding-left: 8px;
+}
+
+
+.modaal-content-container{
+    display: flex;
+}
+
+
+.information_left{
+    width: 30%;
+}
+
+.information_right{
+    width: 100%;
+    
+    height: 350px;
+}
+
+#myChart{
+    height: 380px!important; 
+    width: 820px!important;
+    margin: auto;
+}
+
+.information_right_bottom{
+    display: flex;
+}
+
+.information_right_bottom_left{
+    width: 447px;
+}
+
+.information_right_bottom_right{
+    width: 447px;
+    margin-top: 50px;
+}
+
+img {
+    width: 410px;
+    height: 350px;
+}
+
+#myPieChart{
+    position: relative;
+    margin-top: 80px;
+
+}
+
+.proportion{
+    position: absolute;
+    top:585px;
+    left: 568px;
+    font-size: 45px;
+    color: #545454;
+
+}
+
+
+
+
+/* ---------------------------- */
+         /* 地図 */
+/* -----------------------------> */
+
+
+g{
+    color:#b9c3ca;
+    /* display: none; */
+    /* text-shadow: -2px -2px 5px white, 3px 3px 5px rgba(0, 0, 0, 0.1); */
+}
+
+g:hover {
+    color: #007bff;
+}
+
+
+#myDoughnutChart{
+    box-shadow: -2px -2px 5px white, 3px 3px 5px rgba(0, 0, 0, 0.1);
+    position: absolute;
+    left:600px;
+
+}
+
+#content{
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 540px;
+}
+
+.ttl1,.ttl2{
+    color: #fff !important;
+}
+
+.fare-calendar .fare-rates {
+    position: relative;
+    background: #332E32;
+}
+
+.fare-calendar .fare-rates .fare-monthcontainer {
+    color: #092a5e ;
+    /*display:table-cell;*/
+}
+
+.fare-calendar .fare-rates .fare-monthcontainer .fare-month {
+    margin: 0 4px;
+    /*vertical-align: bottom;*/
+    display: inline-block;
+    width: 88px;
+    text-align: center;
+}
+
+.fare-calendar .fare-rates .fare-monthcontainer .fare-month a
+, .fare-calendar .fare-rates .fare-monthcontainer .fare-month span {
+    display: block;
+}
+
+.fare-calendar .fare-rates .fare-monthcontainer .fare-month span:first-of-type {
+    margin-bottom: 7px;
+}
+
+.fare-calendar .fare-rates .fare-monthcontainer .fare-month span:last-of-type {
+    margin: 10px 0 7px;
+}
+
+.fare-calendar .fare-rates .fare-monthcontainer .fare-month button.btn2 {
+    width: 60px;
+    padding-left: 0;
+    padding-right: 0;
+}
+
+.fare-calendar .fare-rates .fare-monthcontainer .fare-month span.fare-price {
+    min-height: 20px;
+    background-color: #FFF ;
+    transform-origin: 100% 100%;
+    -webkit-animation: priceAnimation 0.5s 1 ease-in-out;
+    -moz-animation: priceAnimation 0.5s 1 ease-in-out;
+    -o-animation: priceAnimation 0.5s 1 ease-in-out;
+    border-radius: 3px;
+    /*                        -webkit-transition: all 0.5s 1 ease-in-out;
+    -moz-transition: all 0.5s 1 ease-in-out;
+    -o-transition: all 0.5s 1 ease-in-out; */
+}
+
+.fare-calendar .fare-rates .fare-monthcontainer .fare-month span.fare-price.cheapest {
+    background-color: #EF3D84 ;
+}
+
+.fare-calendar .fare-rates .fare-monthcontainer .fare-month span.fare-price:hover {
+    background-color: #ccc ;
+    cursor: pointer;
+}
+
+.fare-calendar .fare-rates .fare-monthcontainer .fare-month span.fare-price.cheapest:hover {
+    background-color: #C13773 ;
+    cursor: pointer;
+}
+
+
+@-webkit-keyframes priceAnimation {
+    from {-webkit-transform: scaleY(0.1);}
+    to {-webkit-transform: scaleY(1.0);}
+}
+
+@-moz-keyframes priceAnimation {
+    from {-moz-transform:scaleY(0.1);}
+    to {-moz-transform:scaleY(1.0);}
+}
+
+@-o-keyframes priceAnimation {
+    from {-o-transform:scaleY(0.1);}
+    to {-o-transform:scaleY(1.0);}
+}
+
+.fare-monthcontainer{
+    background-color: #ebf5fc;
+    box-shadow: -2px -2px 5px white, 3px 3px 5px rgba(0, 0, 0, 0.1);
+    position: absolute;
+    top: -380px;
+    left: 200px;
+}
+

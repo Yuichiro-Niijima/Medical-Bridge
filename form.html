@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+
+    <!-- UIkit CSS -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/uikit/3.0.3/css/uikit.min.css" />
+    
+    <!-- UIkit JS -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/uikit/3.0.3/js/uikit.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/uikit/3.0.3/js/uikit-icons.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <link rel="stylesheet" href="form.css">
+
+    <title>Document</title>
+</head>
+<body>
+    <div class="main_title">
+        <h1>登録フォーム</h1>
+        <p>病歴、病状を医師に共有するためのものです。</p>
+    </div>
+
+    <form>
+        
+        <fieldset class="uk-fieldset">
+            <div class="uk-margin">
+                <label for="">名前</label>
+                <input class="uk-input" type="text" id="name">
+            </div>
+
+            <div class="uk-margin uk-grid-small uk-child-width-auto uk-grid">
+                <label><input class="uk-radio" type="radio" name="radio2" value="男性">男性</label>
+                <label><input class="uk-radio" type="radio" name="radio2" value="女性">女性</label>
+                <label><input class="uk-radio" type="radio" name="radio2" value="LGBT">LGBT</label>
+            </div>
+
+            <div class="uk-margin">
+                <label for="">住所</label>
+                <input class="uk-input" type="text" id="address">
+            </div>
+
+            <div class="uk-margin">
+                <label for="">痛みの部位</label>
+                <select class="uk-select" id="bodyPain">
+                    <option>未選択</option>
+                    <option>頭</option>
+                    <option>肩</option>
+                    <option>腕</option>
+                    <option>手</option>
+                    <option>胸</option>
+                    <option>腰</option>
+                    <option>足</option>
+                </select>
+            </div>
+
+            <div class="uk-margin">
+                <label for="">病名</label>
+                <input class="uk-input" type="text" id="diseaseName">
+            </div>
+            <button type="button" class="uk-button uk-button-primary uk-width-1-1" id="send">送信</button>
+        </fieldset>
+    </form>
+
+
+
+    <!-- ?---------------------------------------->
+    <!-- ?                 firebase          
+    <!-- ?---------------------------------------->
+
+    <!--The core Firebase JS SDK is always required and must be listed first--> 
+        <script src="https://www.gstatic.com/firebasejs/7.14.5/firebase.js"></script>
+    
+        <!-- TODO: Add SDKs for Firebase products that you want to use
+        https://firebase.google.com/docs/web/setup#available-libraries -->
+    
+        <script>
+            // Your web app's Firebase configuration
+            let firebaseConfig = {
+                apiKey: "AIzaSyA6OOcpZKaZVZLX_z7F4I0BV8DjYUSGF4c",
+                authDomain: "chat-js-championship.firebaseapp.com",
+                databaseURL: "https://chat-js-championship.firebaseio.com",
+                projectId: "chat-js-championship",
+                storageBucket: "chat-js-championship.appspot.com",
+                messagingSenderId: "788363975969",
+                appId: "1:788363975969:web:a5699cab8e65955f2d7260"
+            };
+            // Initialize Firebase
+            firebase.initializeApp(firebaseConfig);
+
+            let db02 = firebase.firestore().collection("information");
+
+
+            // -------------------------------------
+            //          firebase 送信
+            // -------------------------------------
+
+            $(function () { 
+                $("#send").on("click", function () {
+                    
+                    const dateObjectForm = {
+                        name: $("#name").val(),
+                        sex: $('input[name="radio2"]:checked').val(),
+                        address: $("#address").val(),
+                        bodyPain: $("#bodyPain").val(),
+                        diseaseName: $("#diseaseName").val()
+                    }
+                    
+                    db02.add(dateObjectForm);
+                    $("#name").val("");
+                    $('input[name="radio2"]:checked').prop('checked', false);
+                    $("#address").val("");
+                    $("#bodyPain").val("");
+                    $("#diseaseName").val("");
+
+                });
+            });
+
+            
+
+
+            </script>
+    
+</body>
+</html>
