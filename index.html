@@ -15,6 +15,10 @@
     <script src="Modaal-master/dist/js/modaal.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.9.3/Chart.min.js"
         integrity="sha256-R4pqcOYV8lt7snxMQO/HSbVCFRPMdrhAFMH+vr9giYI=" crossorigin="anonymous"></script>
+        <!-- jQuery UI -->
+        <!-- <script src="https://code.jquery.com/jquery-3.0.0.min.js"></script>
+        <script src="https://code.jquery.com/ui/1.12.0/jquery-ui.js"></script> -->
+        <!-- 以上 -->
     <link rel="stylesheet" href="style.css">
     <title>Medical Bridge</title>
 </head>
@@ -23,8 +27,17 @@
     <header>
         <div class="header_inputBox">
             <i class="fas fa-search"></i>
-            <input type="text" placeholder="名前、メッセージを検索">
+            <input id="search_doctore" type="text" placeholder="名前、メッセージを検索">
         </div>
+        <div class="hit_search">
+            <ul class="hit_search_ul">
+                <li></li>
+            </ul>
+        </div>
+    
+        <!-- <div>
+            <button id="add_chatList">追加</button>
+        </div> -->
     </header>
 
     <!----------------------------
@@ -36,57 +49,36 @@
                 <h1>Chat List</h1>
             </div>
             <ul class="chatlistBox_group">
-                <li class="chatlistBox">
+                <li class="chatlistBox00">
                     <p class="hospital_name">memo</p>
                 </li>
 
-                <li class="chatlistBox">
-                    <p class="hospital_name" id="hospital_name">A病院</p>
-                    <ul id="fieldBox" class="fieldBox">
-                        <li class="field" id="field">精神科
-                            <ul id="doctors" class="doctors">
-                                <li class="adoctor">田中先生</li>
-                                <li class="adoctor">玉田先生</li>
-                            </ul>
-                        </li>
-                        <li class="field" id="field">整形外科
-                            <ul id="doctors" class="doctors">
-                                <li class="adoctor">中野先生</li>
-                                <li class="adoctor">小川先生</li>
-                            </ul>
-                        </li>
-                        <li class="field" id="field">内科
-                            <ul id="doctors" class="doctors">
-                                <li class="adoctor">白井先生</li>
-                                <li class="adoctor">小沢先生</li>
-                            </ul>
-                        </li>
-                    </ul>
-                </li>
+                <!-- <li class="chatlistBox">
+                </li> -->
 
                 <li class="chatlistBox">
-                    <p class="hospital_name" id="hospital_name">B病院</p>
-                    <ul id="fieldBox" class="fieldBox">
-                        <li class="field" id="field">精神科
-                            <ul id="doctors" class="doctors">
+                    <p class="hospital_name">A病院</p>
+                    <ul class="fieldBox">
+                        <li class="field">精神科
+                            <ul class="doctors">
                                 <li class="adoctor">田中先生</li>
                                 <li class="adoctor">玉田先生</li>
                             </ul>
                         </li>
-                        <li class="field" id="field">整形外科
-                            <ul id="doctors" class="doctors">
+                        <li class="field" >整形外科
+                            <ul class="doctors">
                                 <li class="adoctor">中野先生</li>
                                 <li class="adoctor">小川先生</li>
                             </ul>
                         </li>
-                        <li class="field" id="field">内科
-                            <ul id="doctors" class="doctors">
+                        <li class="field" >内科
+                            <ul class="doctors">
                                 <li class="adoctor">白井先生</li>
                                 <li class="adoctor">小沢先生</li>
                             </ul>
                         </li>
                     </ul>
-                </li>
+                </li> 
             </ul>
         </div>
 
@@ -130,8 +122,7 @@
 
                 </div>
                 <div class="input_message">
-
-                    <textarea name="" id="text" cols="30" rows="10" placeholder="メッセージを入力"></textarea>
+                    <textarea name="" id="text" cols="30" rows="7" placeholder="メッセージを入力"></textarea>
                 </div>
             </div>
         </div>
@@ -174,7 +165,7 @@
                             <div class="infoBox">
                                 <li class="disease_name"><label class="info_labe">症状:</label>ヘルニア</li>
                             </div>
-                       
+
                             <div class="medicalHistoryBox">
                                 <div class="disease_name">
                                     <li>病歴</li>
@@ -202,7 +193,6 @@
                     
                             </div>
                     
-                   
                         </ul>
                     </div>
                     
@@ -1968,9 +1958,16 @@
     </main>
 
 
-                                <!----------------------------
+
+
+
+
+                                <!--------------------------------------
+
                                             Javascript
-                                ----------------------------->
+
+                                --------------------------------------->
+
 
 
     <!----------------------------
@@ -2014,6 +2011,8 @@
         // informationの部分
         let db02 = firebase.firestore().collection("information");
 
+        let db03 = firebase.firestore().collection("hospital");
+
         //firebaseにchat内容を送信 
         $("#send").on("click", function () {
 
@@ -2040,8 +2039,100 @@
 
             $("#output").html(str);
             $("#auto_scroll").scrollTop($("#auto_scroll")[0].scrollHeight);
-            console.log($("#auto_scroll")[0]);
+            // console.log($("#auto_scroll")[0]);
         });
+
+
+        // ----------------------------------
+        //          病院検索
+        // ----------------------------------
+        $("#search_doctore").keypress(function (e) {
+                let search_doctore = $("#search_doctore").val();
+                db03.where("name", "==", search_doctore).get().then(function(querySnapshot) {
+
+                querySnapshot.forEach(function (doc) {
+                    // console.log(doc.id, " => ", doc.data());
+                    let name = doc.data().name
+                    let services = doc.data().services
+                    let dname = doc.data().dname
+
+
+                    console.log(name);
+                    console.log(services);
+                    console.log(dname);
+                    
+                    $(".hit_search").show();
+                    $(".hit_search_ul").append(
+                        `<li class="hospitalName_search">${name}　　　${services}<br><li>`);
+                        
+
+                    // ----------------------------------
+                    //      チャットリストに追加
+                    //  ----------------------------------
+
+                    $(".hospitalName_search").on("click", function () {
+
+                       let get_hospitalName = $(".hospitalName_search").text()
+                       console.log(get_hospitalName);
+                      
+
+
+                        $(".chatlistBox_group").append(`
+                            <li class="chatlistBox">
+                                <p class="hospital_name">${name}</p>
+                                <ul class="fieldBox">
+                                    <li class="field">${services}
+                                        <ul class="doctors">
+                                            <li class="adoctor">${dname}</li>
+                                        </ul>
+                                    </li>
+                                </ul>
+                            </li>`
+
+                //             <li class= "chatlistBox" >
+                    //             <p class="hospital_name">A病院</p>
+                    //             <ul class="fieldBox">
+                    //             <li class="field" >精神科
+                    //             <ul class="doctors">
+                    //                         <li class="adoctor">田中先生</li>
+                    //                     </ul>
+                    //                 </li>
+                    //                 <li class="field">整形外科
+                    //             <ul class="doctors">
+                    //                         <li class="adoctor">中野先生</li>
+                    //                     </ul>
+                    //                 </li>
+                    //                 <li class="field">内科
+                    //             <ul class="doctors">
+                    //                         <li class="adoctor">白井先生</li>
+                    //                     </ul>
+                    //                 </li>
+                    //             </ul>
+                //             </li > 
+
+                            
+                           
+                            );
+
+                        $(".hit_search").css("display","none");
+
+          
+
+
+                    });
+
+
+                });
+            })               
+           });
+           
+        
+       
+
+
+
+
+
 
 
         // ----------------------------------
@@ -2052,7 +2143,7 @@
             let search_word = $("#search_word").val();
             db02.where("name", "==", search_word).get().then(snap => {
                 sizeName = snap.size
-                console.log(sizeName);
+                // console.log(sizeName);
                 $("#research_outcome").text(sizeName + "件、該当しました。");
 
 
@@ -2060,16 +2151,16 @@
                     let selectSex = $(this).text();
                     db02.where("name", "==", search_word).where("sex", "==", selectSex).get().then(snap => {
                         sizeSex = snap.size
-                        console.log(sizeSex);
+                        // console.log(sizeSex);
                         $("#research_outcome").text(sizeSex + "件、該当しました。");
 
 
                         $(".prefecture").on("click", function () {
                             let prefecture = $("#add_prefecture").text();
-                            console.log(prefecture);
+                            // console.log(prefecture);
                             db02.where("name", "==", search_word).where("sex", "==", selectSex).where("address", "==", prefecture).get().then(snap => {
                                 sizeAddress = snap.size
-                                console.log(sizeAddress);
+                                // console.log(sizeAddress);
                                 $("#research_outcome").text(sizeAddress + "件、該当しました。");
 
                                 
@@ -2078,7 +2169,7 @@
                                 $(".select_body").on("click", function () {
 
                                     let selectbodyPain = $(this).attr("value");
-                                    console.log(selectbodyPain);
+                                    // console.log(selectbodyPain);
 
 
                                     db02.where("name", "==", search_word).where("sex", "==", selectSex).where("address", "==", prefecture).where("bodyPain", "==", selectbodyPain).get().then(snap => {
@@ -2128,29 +2219,6 @@
             $(this).toggleClass('sex_push_button');
         });
 
-        // $("li").on("click", function(){
-            // $(this).removeClass("sexHsex_push_buttonuman");
-
-            // $(this).toggleClass("sex_push_button");
-            // $("li").not($(this)).css("pointerevents": "none");
-            // $(this).toggleClass("sex_push_button");
-            // alert("ok")
-            // $("#sex").not($(this)).css("display","none");
-            // $("#sex").not($(this)).toggle();
-        // });
-
-
-
-
-
-
-
-
-
-
-       
-
-
 
 
 
@@ -2160,18 +2228,48 @@
 
 
     <script>
+
+        // -------------------------------
+        //     アコーディオンメニュー
+        // -------------------------------
+        
+        // $(function () {
+        //     // 親メニュー処理
+        //     $('.hospital_name').click(function () {
+        //         // メニュー表示/非表示
+        //         alart("ok");
+        //         $(this).next('ul').slideToggle('fast');
+        //     });
+
+        //     // 子メニュー処理
+        //     $('.field').click(function () {
+        //         // メニュー表示/非表示
+        //         $(this).children('ul').slideToggle('fast');
+
+
+        //     });
+
+        //     $('.adoctor').on('click', function () {
+        //         let dname = $(this).text();
+        //         $("#selected_chatlist").text(dname);
+
+        //         event.stopPropagation();
+        //     })
+        // });
+
+        // 動的なボタン
         $(function () {
             // 親メニュー処理
-            $('.hospital_name').click(function () {
+            $(document).on("click", ".hospital_name", function () {
                 // メニュー表示/非表示
                 $(this).next('ul').slideToggle('fast');
             });
 
             // 子メニュー処理
-            $('.field').click(function () {
+            $(document).on("click",".field", function () {
                 // メニュー表示/非表示
                 $(this).children('ul').slideToggle('fast');
-
+                 
 
             });
 
@@ -2180,20 +2278,16 @@
                 $("#selected_chatlist").text(dname);
 
                 event.stopPropagation();
-            })
+
+               
+            });
         });
 
         // 先生名をクリックすると、メッセージ板が変更
 
-        $(function () {
-
-            $('.adoctor').on('click', function () {
-                
-            });
-
-        });
 
 
+    
 
 
 

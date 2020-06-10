@@ -35,6 +35,7 @@ header{
     align-items: center;
     box-shadow: inset 2px 2px 5px #BABECC, inset -5px -5px 10px #FFF;
     border-radius: 320px;
+    position: relative;
     
 }
 
@@ -54,6 +55,58 @@ header input[type="text"] {
     width: 400px;
     height: 30px;
     background-color: transparent;
+}
+
+.hit_search{
+    width: 436px;
+    height: 50px;
+    
+    border-color: #fff;
+    /* border: 1px solid white ; */
+    position: absolute;
+    top: 53px;
+    display: none;
+    
+}
+
+.hit_search ul{
+    list-style: none;
+}
+
+/* 病院候補 */
+.hospitalName_search{
+    background-color: rgba(51, 46, 50, 0.164);
+    font-size: 20px;
+    padding: 5px 0 ;
+}
+
+
+
+
+
+/* chatlistに追加？ */
+
+#add_chatList{
+
+    height: 35px;
+    width: 60px;
+    line-height: 35px;
+    text-align: center;
+    box-shadow: -2px -2px 5px white, 3px 3px 5px rgba(0, 0, 0, 0.1);
+    margin: 10px 35px 10px 10px;
+    border-radius: 20px;
+    margin-left: 40px;
+    color:#57c9d5;
+
+}
+
+
+#add_chatList:hover{
+    box-shadow: -2px -2px 5px rgba(0, 0, 0, 0.1), 3px 3px 5px rgba(0, 0, 0, 0.1);
+}
+
+#add_chatList:active{
+    box-shadow: inset -2px -2px 5px white, inset 3px 3px 5px rgba(0, 0, 0, 0.1);
 }
 
 
@@ -109,6 +162,18 @@ h1{
     height: 60px;  
     line-height: 60px;
 } 
+
+.hospital_name00{
+    padding-left: 30px;
+    font-size: 20px;
+    height: 60px;  
+    line-height: 60px;
+
+}
+
+.chatlistBox00:hover{
+    box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.1), 3px 3px 5px rgba(0, 0, 0, 0.1);
+}
 
 .chatlistBox:hover{
     box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.1), 3px 3px 5px rgba(0, 0, 0, 0.1);
@@ -173,7 +238,7 @@ h1{
 
 
 
-#fieldBox ,#doctors{
+.fieldBox ,.doctors{
     display: none;
 } 
 
@@ -645,59 +710,6 @@ a{
 }
 
 
-/* .info_blue{
-    margin-top: 100px;
-    
-    width: 380px;
-    height: 380px;
-    box-shadow: -2px -2px 5px white, 3px 3px 5px rgba(0, 0, 0, 0.1);
-    border-radius: 50%;
-    position: relative;
-}
-
-.info_blue2{
-    width: 300px;
-    height: 300px;
-    box-shadow: -2px -2px 5px white, 3px 3px 5px rgba(0, 0, 0, 0.1);
-    border-radius: 50%;
-    position: absolute;
-    left:40px;
-    top: 40px;
-    background-color: #007bff;
-}
-
-.info_blue3{
-    width: 260px;
-    height: 260px;
-
-    border-radius: 50%;
-    position: absolute;
-    left:20px;
-    top: 20px;
-    background-color: #ebf5fc;
-    box-shadow: 2px 2px 2px 0px #DFE4EA inset, -2px -2px 2px 0px #ffffff inset;
-}
-
-.info_blue4{
-    width: 220px;
-    height: 220px;
-
-    border-radius: 50%;
-    position: absolute;
-    left:20px;
-    top: 20px;
-    background-color: #ebf5fc;
-    box-shadow: 2px 2px 2px 0px #DFE4EA inset, -2px -2px 2px 0px #ffffff inset;
-
-}
-
-.persent{
-    z-index: 100;
-    position: absolute;
-    top:70px;
-    left: 50px;
-    font-size: 50px;
-} */
 
 /*病歴 */
 .medicalHistoryBox{
@@ -790,6 +802,10 @@ img {
          /* 地図 */
 /* -----------------------------> */
 
+svg#laye{
+    margin: auto;
+    /* padding-left: 200px; */
+}
 
 g{
     color:#b9c3ca;
